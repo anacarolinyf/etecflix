@@ -38,32 +38,62 @@
             </div>
         </header>
 
-        <!-- Login Area -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title text-center mb-4">Login</h4>
-                            <form action="dashboard.html" method="POST">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email" required />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Senha</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Enter password" required />
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                            </form>
-                            <div class="text-center mt-3">
-                                <a href="#">Esqueceu sua senha?</a>
-                            </div>
+<!-- Seu código existente com pequenas mudanças -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4">Login</h4>
+                    <form id="loginForm" method="POST">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" required />
                         </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+
+                    <!-- Mensagem de sucesso que vai aparecer após login -->
+                    <div id="successMessage" class="alert alert-success mt-3" style="display:none;">
+                        Usuário logado com sucesso!
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const successMessage = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // evita o envio do formulário tradicional (recarregar página)
+
+    // Pega valores dos inputs
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // Aqui você pode validar ou fazer autenticação via API
+
+    if(email && password) {
+      // Esconde o formulário
+      form.style.display = 'none';
+
+      // Mostra a mensagem de sucesso
+      successMessage.style.display = 'block';
+    } else {
+      alert('Preencha todos os campos!');
+    }
+  });
+</script>
 
         <!-- Page content-->
         <div class="container">
